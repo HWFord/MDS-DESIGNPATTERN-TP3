@@ -1,7 +1,10 @@
 package com.tactfactory.designpatternniveau1.factory.tp1;
 
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collection;
 import java.util.List;
+import java.util.Random;
 
 /**
 *
@@ -22,19 +25,33 @@ import java.util.List;
 *         caractères ou les classes
 */
 public class FactoryTp1 {
-
-  public static void main(String[] args) {
-    randomTown();
-    System.out.println("---------------------------");
-    manualTown();
-  }
+	public static void main(String[] args) {
+		randomTown();
+	    System.out.println("---------------------------");
+	    manualTown();
+	    
+	}
 
   private static void manualTown() {
-
+	  Creator creator = new ConcreteCreator();
+	  ArrayList<Building> buildingsListM= new ArrayList<Building>();
+	  buildingsListM.add(creator.createBuilding("CityHall"));
+	  buildingsListM.add(creator.createBuilding("House"));
+	  buildingsListM.add(creator.createBuilding("FireDepartement"));
+	  for (Building product : buildingsListM) {
+	      product.addBuilding();
+	    }
   }
 
   private static void randomTown() {
-
+	  Random random = new Random();
+	  ArrayList<Buildings> buildingsListR= new ArrayList<Buildings>();
+	  for (int i = 0; i < 20; i++){
+		  Buildings randomBuildings = Buildings.values()[random.nextInt(Buildings.values().length)];
+	      buildingsListR.add(randomBuildings);
+	  }
+	  System.out.println(Arrays.toString(buildingsListR.toArray()));
+	  
   }
 
 }

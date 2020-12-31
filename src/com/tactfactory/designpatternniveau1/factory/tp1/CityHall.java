@@ -1,5 +1,9 @@
 package com.tactfactory.designpatternniveau1.factory.tp1;
 
 public class CityHall implements Building {
-
+	@Override
+	public void addBuilding() {
+		System.out.println("City Hall built");
+	}
+	
 }
